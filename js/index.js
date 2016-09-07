@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ReactDOM.render(
       /*<Provider store={store}>
       </Provider>,*/
-      <Main/>,
+      <Main message={'hi, from React!'}/>,
       document.getElementById('app')
     );
 });
