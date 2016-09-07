@@ -42,3 +42,6 @@ jspm_packages
 
 # mac stuff
 .DS_Store
+
+# NPM Build
+build
