@@ -9,7 +9,7 @@ var store = require('./store');
 document.addEventListener('DOMContentLoaded', function() {
     ReactDOM.render(
       <Provider store={store}>
-      <Main message={'hi, from React!'}/>,
+      <Main message={'hi, from React!'}/>
       </Provider>,
       document.getElementById('app')
     );

@@ -55,10 +55,11 @@
 	var store = __webpack_require__(202);
 	
 	document.addEventListener('DOMContentLoaded', function () {
-	  ReactDOM.render(
-	  /*<Provider store={store}>
-	  </Provider>,*/
-	  React.createElement(Main, { message: 'hi, from React!' }), document.getElementById('app'));
+	  ReactDOM.render(React.createElement(
+	    Provider,
+	    { store: store },
+	    React.createElement(Main, { message: 'hi, from React!' })
+	  ), document.getElementById('app'));
 	});
 
 /***/ },
@@ -23212,6 +23213,7 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
+	var connect = __webpack_require__(172).connect;
 	
 	var Main = React.createClass({
 	  displayName: 'Main',
@@ -23225,13 +23227,44 @@
 	  }
 	});
 	
-	module.exports = Main;
+	var mapStateToProps = function mapStateToProps(state, props) {
+	  return {
+	    message: state.message
+	  };
+	};
+	
+	var Container = connect(mapStateToProps)(Main);
+	
+	module.exports = Container;
 
 /***/ },
 /* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var redux = __webpack_require__(179);
+	var createStore = redux.createStore;
+	
+	var reducers = __webpack_require__(203);
+	
+	var store = createStore(reducers.HelloReducer);
+	module.exports = store;
+
+/***/ },
+/* 203 */
 /***/ function(module, exports) {
 
 	"use strict";
+	
+	var initialHelloState = { message: "hello from redux initial state" };
+	
+	var HelloReducer = function HelloReducer(state, action) {
+	   state = state || initialHelloState;
+	   return state;
+	};
+	
+	exports.HelloReducer = HelloReducer;
 
 /***/ }
 /******/ ]);

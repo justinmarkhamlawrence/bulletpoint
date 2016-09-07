@@ -1,4 +1,5 @@
 var React = require('react');
+var connect = require('react-redux').connect;
 
 var Main = React.createClass({
   render: function() {
@@ -8,4 +9,12 @@ var Main = React.createClass({
   }
 })
 
-module.exports = Main;
+var mapStateToProps = function(state, props) {
+    return {
+        message: state.message
+    };
+};
+
+var Container = connect(mapStateToProps)(Main);
+
+module.exports = Container;
