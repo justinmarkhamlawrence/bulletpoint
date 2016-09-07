@@ -3,5 +3,10 @@ var createStore = redux.createStore;
 
 var reducers = require('./reducers');
 
-var store = createStore(reducers.HelloReducer);
+var applyMiddleware = redux.applyMiddleware;
+var thunk = require('redux-thunk').default;
+
+
+
+var store = createStore(reducers.HelloReducer, applyMiddleware(thunk));
 module.exports  = store;
